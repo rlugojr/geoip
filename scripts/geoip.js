@@ -1,3 +1,11 @@
+function renewMap(coordinate){
+  var mapObj = new google.maps.Map(document.getElementById('googleMap'), {
+    zoom: 18,
+    center: coordinate,
+  });
+  return mapObj;
+}
+
 function getJSON(url){
   var Httpreq = new XMLHttpRequest(); // Init a request
   Httpreq.open("GET", url,false);
@@ -12,15 +20,11 @@ function getCoordinate(ip){
   return coordinate;
 }
 
-function getMarker(hop, map){
+function getMarker(hop){
   var coordinate = getCoordinate(hop);
-  var json = JSON.parse(getJSON("http://freegeoip.net/json/" + hop));
   var marker = new google.maps.Marker({
     position: coordinate,
     animation: google.maps.Animation.DROP,
-  });
-  marker.addListener('click', function() {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
   });
   return marker;
 }
@@ -29,30 +33,28 @@ function plot(ip, map){
   var marker = getMarker(ip, map);
   marker.setMap(map);
   map.setCenter(marker.getPosition());
-}
-
-function renewMap(coordinate){
-  var mapObj = new google.maps.Map(document.getElementById('googleMap'), {
-    zoom: 18,
-    center: coordinate,
+  marker.addListener('click', function() {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    var json_str = getJSON("http://freegeoip.net/json/" + ip);
+    var json = JSON.parse(json_str);
+    var contentString = '<div id="content">' +
+                    '<h1>' + json.ip + '</h1>' +
+                    '<div id="bodycontent">' +
+                    '<p>Country Code: ' + json.country_code + '</p>'+
+                    '<p>Country: ' + json.country_name + '</p>' +
+                    '<p>Region Code: ' + json.region_code + '</p>' +
+                    '<p>Region Name: ' + json.region_name + '</p>' +
+                    '<p>City: ' + json.city + '</p>' +
+                    '<p>Zip Code: ' + json.zip_code + '</p>' +
+                    '<p>Time Zone: ' + json.time_zone + '</p>' +
+                    '<p>Latitude: ' + json.latitude + '</p>' +
+                    '<p>Longitude: ' + json.longitude + '</p>' +
+                    '<p>Metro Code: ' + json.metro_code + '</p>' +
+                    '</div>' +
+                  '</div>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    infowindow.open(map, marker);
   });
-  return mapObj;
-}
-
-function contentString(json){
-  var content = '<div id="content">' +
-                  '<h1>' + json.ip + '</h1>' +
-                  '<div id="bodycontent">' +
-                  '<p>Country Code: ' + json.country_code + '</p>'+
-                  '<p>Country: ' + json.country_name + '</p>' +
-                  '<p>Region Code: ' + json.region_code + '</p>' +
-                  '<p>Region Name: ' + json.region_name + '</p>' +
-                  '<p>City: ' + json.city + '</p>' +
-                  '<p>Zip Code: ' + json.zip_code + '</p>' +
-                  '<p>Time Zone: ' + json.time_zone + '</p>' +
-                  '<p>Latitude: ' + json.latitude + '</p>' +
-                  '<p>Longitude: ' + json.longitude + '</p>' +
-                  '<p>Metro Code: ' + json.metro_code + '</p>' +
-                  '</div>' +
-                '</div>'
 }

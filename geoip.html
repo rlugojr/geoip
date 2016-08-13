@@ -27,7 +27,6 @@ function initialize() {
         mapTypeId:google.maps.MapTypeId.ROADMAP
     };
     var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-    localStorage['map'] = map;
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
@@ -45,7 +44,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </html>
 <script>
 function draw(ip){
-  var map = renewMap({lat: 0, lng: 0});
+  var map = renewMap(getCoordinate(ip));
   plot(ip, map);
 }
 </script>
