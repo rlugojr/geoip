@@ -6,7 +6,10 @@ Just a little project I came up with while playing with Google Map API.
 Geo info provided by [freegeoip.net](http://freegeoip.net/).
 
 ### How to Install
-It is a web page anyways.
+It is just a web page anyways.
+
+### Version
+0.1
 
 ### How to Use
 Simply giving the IP address you would like to plot on the map. For example:
