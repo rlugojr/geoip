@@ -6,7 +6,7 @@ Just a little project I came up with while playing with Google Map API.
 Geo info provided by [freegeoip.net](http://freegeoip.net/).
 
 ### How to Install
-It is just a web page anyways.
+It is just a web page.
 
 ### Version
 0.1
@@ -21,8 +21,8 @@ Then click 'IP to Geo' button. The map will automatically zoom in on where the m
 Traceroute feature is under development.
 
 ###TODO
-1. Implement traceroute.
+1. Implement traceroute (Probably not gonna do it --- 14/08/2016).
 
-2. Add visual description overlay to server (reveals server info, coordinate, etc.).
+2. Add visual description overlay to server (Completed --- 13/08/2016).
 
-3. Animated zoom in (if I figure out how to play with Google Map API).
+3. Animated zoom in (Under development).
