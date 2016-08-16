@@ -35,7 +35,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <body>
 <div class="input-group">
   <span class="input-group-btn">
-    <button class="btn btn-default" type="button" onclick="draw(document.getElementById('inputs').value)">IP To Geo</button>
+    <button class="btn btn-default" type="button" onclick="draw($('#inputs').val())">IP To Geo</button>
   </span>
   <input type="text" class="form-control" id='inputs'>
 </div>

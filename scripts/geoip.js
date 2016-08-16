@@ -37,6 +37,8 @@ function plot(ip, map){
     marker.setAnimation(google.maps.Animation.BOUNCE);
     var json_str = getJSON("http://freegeoip.net/json/" + ip);
     var json = JSON.parse(json_str);
+    json_str = getJSON("http://maps.googleapis.com/maps/api/geocode/json?latlng=" + json.latitude + "," + json.longitude + "&sensor=true");
+    var address_json = JSON.parse(json_str);
     var contentString = '<div id="content">' +
                     '<h1>' + json.ip + '</h1>' +
                     '<div id="bodycontent">' +
@@ -45,6 +47,8 @@ function plot(ip, map){
                     '<p>Region Code: ' + json.region_code + '</p>' +
                     '<p>Region Name: ' + json.region_name + '</p>' +
                     '<p>City: ' + json.city + '</p>' +
+                    '<p>Suburb: ' + address_json.results[0].address_components[2].long_name + '</p>' +
+                    '<p>Street Info: ' + address_json.results[0].address_components[0].long_name + " " + address_json.results[0].address_components[1].long_name + '</p>' +
                     '<p>Zip Code: ' + json.zip_code + '</p>' +
                     '<p>Time Zone: ' + json.time_zone + '</p>' +
                     '<p>Latitude: ' + json.latitude + '</p>' +

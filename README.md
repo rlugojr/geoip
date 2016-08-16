@@ -5,11 +5,13 @@ Just a little project I came up with while playing with Google Map API.
 
 Geo info provided by [freegeoip.net](http://freegeoip.net/).
 
+Street info provided by [Google Geocode API](http://maps.googleapis.com/).
+
 ### How to Install
 It is just a web page.
 
 ### Version
-0.1
+0.2
 
 ### How to Use
 Simply giving the IP address you would like to plot on the map. For example:
@@ -26,3 +28,5 @@ Traceroute feature is under development.
 2. Add visual description overlay to server (Completed --- 13/08/2016).
 
 3. Animated zoom in (Under development).
+
+4. Add street info and suburb (Completed --- 17/08/2016).
