@@ -22,7 +22,7 @@ Then click 'IP to Geo' button. The map will automatically zoom in on where the m
 
 Traceroute feature is under development.
 
-###TODO
+### TODO
 1. Implement traceroute (Probably not gonna do it --- 14/08/2016).
 
 2. Add visual description overlay to server (Completed --- 13/08/2016).
@@ -30,3 +30,16 @@ Traceroute feature is under development.
 3. Animated zoom in (Under development).
 
 4. Add street info and suburb (Completed --- 17/08/2016).
+
+
+### Addition: A JavaScript Wrapper for freegeoip
+```
+// Get the target JSON from a specific URL without depending on jQuery.
+getJSON(url_link);
+
+// Reset a Google Map in which the center is at the giving coordinate, return the map object handle.
+renewMap(coordinate);
+
+// Return the geo coordinate of a specific IP.
+getCoordinate(ip);
+```
